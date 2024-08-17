@@ -1,25 +1,25 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
 const companySchema = new mongoose.Schema(
   {
     name: {
-      Type: String,
+      type: String,
       required: true,
+      unique: true,
     },
-    discription: {
-      Type: String,
-    },
-    website: {
-      Type: String,
-    },
-
-    location: {
-      Type: String,
-    },
-    logo: {
+    description: {
       type: String,
     },
-    userid: {
+    website: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    logo: {
+      type: String, // URL to company logo
+    },
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
@@ -27,5 +27,4 @@ const companySchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-export const Job = mongoose.model("Company", companySchema);
+export const Company = mongoose.model("Company", companySchema);

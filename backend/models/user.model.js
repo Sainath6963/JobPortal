@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     fullname: {
       type: String,
@@ -15,22 +15,19 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-
     password: {
       type: String,
       required: true,
     },
-
     role: {
       type: String,
-      enum: ["student", "recruter"],
+      enum: ["student", "recruiter"],
       required: true,
     },
-
     profile: {
       bio: { type: String },
       skills: [{ type: String }],
-      resume: { type: String }, //url to resume file
+      resume: { type: String }, // URL to resume file
       resumeOriginalName: { type: String },
       company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
       profilePhoto: {
@@ -41,5 +38,4 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-export const User = mongoose.model("User", UserSchema);
+export const User = mongoose.model("User", userSchema);
